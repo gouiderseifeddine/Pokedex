@@ -1,0 +1,51 @@
+// PokemonCard.scss
+.pokemon-card {
+  width: 200px;
+  height: 340px;
+  background-color: grey;
+  border-radius: 10px;
+  position: relative;  // Added for positioning the details
+  cursor: pointer; // Optional: Add border-radius for rounded corners
+  
+    img {
+      width: 60%;
+      height: 50%;  // Adjust as needed
+      border-top-left-radius: 10px;  // Optional: Add border-radius for rounded corners
+      border-top-right-radius: 10px;  // Optional: Add border-radius for rounded corners
+    }
+  
+    h3 {
+      font-size: 1.5rem;
+      margin: 10px 0;
+    }
+  
+    p {
+      font-size: 1rem;
+      margin: 5px 0;
+    }
+    .types, .abilities {
+      margin-top: 5px;
+    }
+  
+    span {
+      display: inline-block;
+      padding: 5px 10px;
+      margin: 0 5px 5px 0;
+      background-color: #ccc;  // or any color you prefer
+      border-radius: 5px;
+      font-size: 0.9rem;
+    }
+    .details {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  
