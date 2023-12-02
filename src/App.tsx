@@ -1,11 +1,16 @@
 import React from "react";
-import { Pokedex } from "./pages/list";
 
+import PaginatedList from "./component/PaginatedList/paginatedList";
+import "./App.scss"; // Import the SCSS file
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+// Create a client
+const queryClient = new QueryClient();
 function App() {
   return (
-    <>
-      <Pokedex />
-    </>
+    // Provide the client to your App
+    <QueryClientProvider client={queryClient}>
+      <PaginatedList />
+    </QueryClientProvider>
   );
 }
 
