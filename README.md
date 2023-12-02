@@ -24,8 +24,8 @@ This project is a React application that visualizes Pokémon data using GraphQL.
 
    ```
 
-2. ** Setup Redux Store:**
-## Setup Redux Store:
+
+## 2.Setup Redux Store:
 
 Add the following content to your `redux/store.js` file:
 
@@ -55,20 +55,80 @@ const store = configureStore({
 });
 
 export default store;
+```
 
 
+## 3. Configure Apollo Client with Redux:
+   ```javascript
+   // apollo/client.js
+import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { relayStylePagination } from '@apollo/client/utilities';
+import store from '../redux/store';
 
-3. ** Configure Apollo Client with Redux:**
+const httpLink = createHttpLink({
+  uri: 'https://pokeapi.co/graphql',
+});
 
+const authLink = setContext((_, { headers }) => {
+  const token = ''; // Add any authorization token if needed
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? Bearer ${token} : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          pokemons: relayStylePagination(['type', 'ability']),
+        },
+      },
+    },
+  }),
+});
+
+export default client;
+```
+   
+## 4. Dispatch Redux Actions from Apollo Components:
    ```bash
-   npm install @reduxjs/toolkit react-redux @apollo/client
+   // components/PokemonList.js
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useQuery } from '@apollo/client';
+import { setSelectedPokemon } from '../redux/store';
+import { GET_POKEMONS } from '../graphql/queries';
 
-   ```
+const PokemonList = () => {
+  const dispatch = useDispatch();
 
-4. ** Dispatch Redux Actions from Apollo Components:**
+  const { loading, error, data } = useQuery(GET_POKEMONS);
 
-   ```bash
-   npm install @reduxjs/toolkit react-redux @apollo/client
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  const handlePokemonClick = (pokemon) => {
+    dispatch(setSelectedPokemon(pokemon));
+  };
+
+  return (
+    <div>
+      {data.pokemons.results.map((pokemon) => (
+        <div key={pokemon.name} onClick={() => handlePokemonClick(pokemon)}>
+          {pokemon.name}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default PokemonList;
    ```
 
 ## Project Structure
