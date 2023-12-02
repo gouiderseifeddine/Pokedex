@@ -12,7 +12,7 @@ This project is a React application that visualizes Pokémon data using GraphQL.
 - Apollo Client
 - Redux
 - GraphQL
-- Tailwind CSS (or SASS/SCSS)
+- Tailwind CSS / SCSS
 - Jest, React Testing Library, Cypress (for testing)
 
 ## Project Setup
