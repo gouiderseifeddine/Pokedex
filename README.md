@@ -27,7 +27,31 @@ This project is a React application that visualizes Pokémon data using GraphQL.
 2. ** Setup Redux Store:**
 
    ```bash
-      npm install @reduxjs/toolkit react-redux @apollo/client
+      // redux/store.js
+import { configureStore, createSlice } from '@reduxjs/toolkit';
+
+const pokemonSlice = createSlice({
+  name: 'pokemon',
+  initialState: {
+    selectedPokemon: null,
+  },
+  reducers: {
+    setSelectedPokemon: (state, action) => {
+      state.selectedPokemon = action.payload;
+    },
+  },
+});
+
+export const { setSelectedPokemon } = pokemonSlice.actions;
+export const selectSelectedPokemon = (state) => state.pokemon.selectedPokemon;
+
+const store = configureStore({
+  reducer: {
+    pokemon: pokemonSlice.reducer,
+  },
+});
+
+export default store;
 
    ```
 
@@ -51,9 +75,9 @@ The project follows a standard React folder structure. Here are the key director
 - **src/**
   - **components/**: React components for the user interface.
   - **redux/**: Redux store configuration.
-  - **apollo/**: Apollo Client configuration.
-  - **graphql/**: GraphQL queries and mutations.
-  - **styles/**: Stylesheets.
+  - **service/**: for the pokemon service logic.
+  - **types/**: where we will find Pokemon interface.
+  - **mocks/**: where we will find the list of our pokemons.
 
 ```bash
 npm install
