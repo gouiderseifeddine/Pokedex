@@ -25,9 +25,12 @@ This project is a React application that visualizes Pokémon data using GraphQL.
    ```
 
 2. ** Setup Redux Store:**
+## Setup Redux Store:
 
-   ```bash
-      // redux/store.js
+Add the following content to your `redux/store.js` file:
+
+```javascript
+// redux/store.js
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 
 const pokemonSlice = createSlice({
@@ -51,9 +54,9 @@ const store = configureStore({
   },
 });
 
-export default store;
+export default store;
 
-   ```
+
 
 3. ** Configure Apollo Client with Redux:**
 
