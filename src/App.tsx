@@ -1,12 +1,16 @@
 import React from "react";
 
+import PaginatedList from "./component/PaginatedList/paginatedList";
+import "./App.scss"; // Import the SCSS file
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+// Create a client
+const queryClient = new QueryClient();
 function App() {
   return (
-    <div className="text-3xl font-bold underline">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold">Hello Pokedex Lovers.</h1>
-      </div>
-    </div>
+    // Provide the client to your App
+    <QueryClientProvider client={queryClient}>
+      <PaginatedList />
+    </QueryClientProvider>
   );
 }
 

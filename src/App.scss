@@ -1,0 +1,59 @@
+// App.scss
+.app {
+    text-align: center;
+    padding: 20px;
+  
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+  
+    .navigation-buttons {
+      margin-bottom: 20px;
+  
+      button {
+        margin: 0 10px;
+        padding: 8px 16px;
+        font-size: 1rem;
+      }
+    }
+  }
+  // App.scss (or create a new file for PokemonGrid.scss)
+.pokemon-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .pokemon-row {
+    display: flex;
+    justify-content: center;
+
+    .pokemon-card {
+      margin: 10px;
+    }
+  }
+}
+// App.scss (or create a new file for Buttons.scss)
+.navigation-buttons {
+  margin-bottom: 20px;
+
+  button {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    padding: 8px 16px;
+    font-size: 1rem;
+    margin: 0 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #333; // Darken the background color on hover
+    }
+  }
+}
+
+
+  

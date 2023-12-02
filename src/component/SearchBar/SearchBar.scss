@@ -1,0 +1,32 @@
+// App.scss (or create a new file for Buttons.scss)
+
+  // SearchBar.scss
+input {
+    padding: 10px;  // Adjust as needed
+    font-size: 1rem;  // Adjust as needed
+    border: 1px solid #ccc;  // Border color, adjust as needed
+    border-radius: 5px;  // Border radius, adjust as needed
+    margin-right: 10px;  // Adjust as needed to align with the button
+  }
+  
+  .navigation-buttons {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;  // Adjust as needed to align with the input
+  }
+  button {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    padding: 8px 16px;
+    font-size: 1rem;
+    margin: 0 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #333; // Darken the background color on hover
+    }
+  }
